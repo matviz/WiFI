@@ -6,18 +6,18 @@
 
 Client c; //création de l'objet client pour les connexions wifi
 
-int PORT = 574;
-String cst_DirectIP = "192.168.4.1";
+int PORT = 574; // port de communication
+String cst_DirectIP = "192.168.4.1"; // IP de connexion direct
 
-String screen, previousScreen;
+String screen, previousScreen; // screen est la configuration d'affichage actuel ; previousScreen est la configuration d'affichage précédente ; elle sont toutes deux caractérisé par une chaine de caractère
 String data = "";
 
 String LocalIP = "192.168.1.25";
 
 int size;
 
-int millis;
-int ping;
+int millis; // temps en ms
+int ping; //temps du ping en ms
 
 boolean pressed;
 
@@ -25,32 +25,30 @@ boolean pressed;
 
 
 Frame ToggleBtn = new Frame(); //permet de définir un cadre pour faciliter l'affichage
-Frame ExitBtn = new Frame();
-Frame PingBtn = new Frame();
+Frame ExitBtn = new Frame(); // défini le cadre pour le bouton pour fermer l'app
+Frame PingBtn = new Frame(); // défini le cadre du bouton pour envoyer un ping
 
-Frame BackBtn = new Frame();
-Frame PlusBtn = new Frame();
+Frame BackBtn = new Frame(); // défini le cadre du bouton pour revenir en arrière
+Frame PlusBtn = new Frame(); // défini le cadre du bouton option dans le menu local connect
 
 void setup() { //EQUIVALENT à la partie du main avant le while(1), n'est executé qu'un fois au lancement
-  background(255, 0 ,0);
-  size(displayWidth, displayHeight); 
-  textAlign(CENTER,CENTER);
-  //size(400,800);
-  orientation(PORTRAIT);
-  size = width/10;
-  textSize(size);
+  background(255, 0 ,0); // 
+  size(displayWidth, displayHeight); // défini la taille de l'écran
+  textAlign(CENTER,CENTER);// le texte est défini par rapport au centre cad le milieu de la phrase ou du mot sera toujours au meme endroit.
+  //size(400,800); //taille de l'écran pour les test sur ordi.
+  orientation(PORTRAIT); // se mettra sur le téléphone en mode portrait.
   
-  screen = "Menu";
+  screen = "Menu"; // on se trouve sur la configuration d'affichage "Menu"
   
   //define BTN
 
   
   //initialisation des cadres définitions de position, bordures, couleurs et remplissage
   
-  ToggleBtn.defineLength(width/4,height/4,width/2,height/4);
-  ToggleBtn.Border = color(0,0,255);
-  ToggleBtn.Fill = color(0,0,255, 64);
-  ToggleBtn.filling = false;
+  ToggleBtn.defineLength(width/4,height/4,width/2,height/4); // on vient lancer la fonction defineLength de la class ToggleBtn pour définir les dimensions de la case toggleBtn (voir FRAME.pde)
+  ToggleBtn.Border = color(0,0,255); // défini la couleur des bordures ( avec 3 entrée color fonctionne en R , G , B ) les bordures sont bleu
+  ToggleBtn.Fill = color(0,0,255, 64); // défini la couleur a l'intérieur du bouton ( 4 entrée avec color() donc R, G , B ,alpha(qui défini la transparence avec 0 transparent et 100 opaque)) bleu un peut transparant)
+  ToggleBtn.filling = false; // on ne rempli pas le bouton
   
   ExitBtn.defineLength(width/4,5*height/8,width/2,height/4);
   ExitBtn.Border = color(255,0,0);
@@ -81,10 +79,10 @@ void draw() { //equivalent au while(1) dans un main, est executé en boucle et l
   
   if( !screen.equals(previousScreen) ){//si il y a un changement d'écran alors il faut lancer la fonction d'initialisation de l'écran et mettre à jour la variable qui enregistre l'écran actuel
     
-    previousScreen = screen;   
-    switch(screen){
+    previousScreen = screen; // on prends en compte que l'on a changer d'écran en mettant previousScreen égale à Screen  
+    switch(screen){ //par rapport a la chaine de caractère dans screen
     
-      case "Menu" :   MenuSetup();
+      case "Menu" :   MenuSetup(); // si la chaine de caractere est "menu" on rentre dans MenuSetup
       break;
       
       case "Local" :  LocalSetup();
