@@ -2,6 +2,7 @@
 
 
 //11:FD:35:DB:32:98:01:9F:F2:A7:29:30:27:ED:5F:D4:07:43:7D:48
+//clé de signature du apk
 
 Client c; //création de l'objet client pour les connexions wifi
 
