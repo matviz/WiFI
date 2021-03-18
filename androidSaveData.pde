@@ -1,3 +1,4 @@
+//bibliothèque importé
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.content.Context;
